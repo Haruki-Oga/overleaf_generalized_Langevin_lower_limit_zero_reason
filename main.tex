@@ -1,0 +1,46 @@
+\documentclass[10pt, dvipdfmx]{jarticle}
+%\usetheme{Copenhagen}
+%\usepackage{color}
+%\usefonttheme{professionalfonts}
+\usepackage{amsmath, bm}
+\usepackage{mathrsfs}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\newcommand{\dif}[2]{\frac{\text d #1}{\text d #2}}
+\newcommand{\pdif}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\la}{\left <}
+\newcommand{\ra}{\right >}
+\newcommand{\kb}{k_\text{B}}
+\newcommand{\dt}{\Delta t}
+
+% pdfの栞が文字化けするのを防ぐ
+\usepackage{atbegshi}
+\ifnum 42146=\euc"A4A2 \AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}\else
+\AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
+
+%\setbeamertemplate{navigation symbols}{}
+
+% \onlide< N - M > と書きます. 
+% N番目からM番目までのスライドで表示されるようになります.
+% それ以外のところでは表示されません. 
+
+
+\begin{document}
+よく書かれている一般化Langevin方程式などで用いられる．
+\begin{equation}\label{eq:F_Langevin_form_0}
+    F_\text{w}(t) = \int_0^t \lambda(t-s) u_\text{s}(s) \text{d} s + \delta F_\text{w}(t)
+\end{equation}
+において積分の下限が$-\infty$ではなく$0$としばしば見なされる理由を考える．
+これは，一般には基準時刻$0$によって$F_\text{w}(t)$の値が変化してしまうため正しくないと思われ，
+物理的には下限を$-\infty$にした
+\begin{equation}\label{eq:F_Langevin_form_infty}
+    F_\text{w}(t) = \int_{-\infty}^t \lambda(t-s) u_\text{s}(s) \text{d} s + \delta F_\text{w}(t)
+\end{equation}
+とするべきである．
+実は，式\eqref{eq:F_Langevin_form_0}の両辺と$F_\text{w}(0)$との相関をとったとみられる形の
+\begin{equation}\label{eq:F_cor_Langevin_form_0}
+    \la F_\text{w}(0) F_\text{w}(t) \ra = \int_0^t \lambda(t-s) \la F_\text{w}(0) u_\text{s}(s) \ra \text{d} s
+\end{equation}
+が成り立つ．
+これを式\eqref{eq:F_Langevin_form_infty}を用いて証明する．
+
+\end{document}
